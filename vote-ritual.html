@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote - Ritual of Raven</title>
+    <link rel="stylesheet" href="https://use.typekit.net/wdg2wjk.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="vote-page">
+    <div class="container">
+        <header class="header-vote">
+            <a href="liste.html" class="back-link">← Retour</a>
+            <img src="https://raw.githubusercontent.com/heylynncontact-cpu/tournoi-jeux-indes/main/images/Logoheylynn.png" alt="HeyLynn" class="logo-heylynn-small">
+        </header>
+
+        <main class="vote-content">
+            <div class="game-hero">
+                <img src="https://raw.githubusercontent.com/heylynncontact-cpu/tournoi-jeux-indes/main/images/ritualofraven.png" alt="Ritual of Raven" class="game-hero-image">
+                <div class="game-hero-info">
+                    <h1 class="game-hero-title">RITUAL OF RAVEN</h1>
+                    <div class="game-tags">
+                        <span class="tag tag-purple">Ferme</span>
+                        <span class="tag tag-purple">Magie</span>
+                    </div>
+                    <p class="game-description">
+                        Entretenez votre jardin d'herbes magiques sans vous salir les mains : ce sont les créatures magiques qui s'en occupent pour vous.
+                    </p>
+                </div>
+            </div>
+
+            <form class="vote-form" id="voteForm" data-game="ritual">
+                <div class="criteria-grid">
+                    <!-- Direction Artistique -->
+                    <div class="criteria-item">
+                        <h3 class="criteria-title">DIRECTION ARTISTIQUE</h3>
+                        <div class="rating-dots">
+                            <input type="radio" name="direction_artistique" value="1" id="da1" required>
+                            <label for="da1">1</label>
+                            <input type="radio" name="direction_artistique" value="2" id="da2">
+                            <label for="da2">2</label>
+                            <input type="radio" name="direction_artistique" value="3" id="da3">
+                            <label for="da3">3</label>
+                            <input type="radio" name="direction_artistique" value="4" id="da4">
+                            <label for="da4">4</label>
+                            <input type="radio" name="direction_artistique" value="5" id="da5">
+                            <label for="da5">5</label>
+                            <input type="radio" name="direction_artistique" value="6" id="da6">
+                            <label for="da6">6</label>
+                            <input type="radio" name="direction_artistique" value="7" id="da7">
+                            <label for="da7">7</label>
+                            <input type="radio" name="direction_artistique" value="8" id="da8">
+                            <label for="da8">8</label>
+                            <input type="radio" name="direction_artistique" value="9" id="da9">
+                            <label for="da9">9</label>
+                            <input type="radio" name="direction_artistique" value="10" id="da10">
+                            <label for="da10">10</label>
+                        </div>
+                        <div class="rating-value">
+                            <span class="current-rating" data-criteria="direction_artistique">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Originalité -->
+                    <div class="criteria-item">
+                        <h3 class="criteria-title">ORIGINALITÉ</h3>
+                        <div class="rating-dots">
+                            <input type="radio" name="originalite" value="1" id="or1" required>
+                            <label for="or1">1</label>
+                            <input type="radio" name="originalite" value="2" id="or2">
+                            <label for="or2">2</label>
+                            <input type="radio" name="originalite" value="3" id="or3">
+                            <label for="or3">3</label>
+                            <input type="radio" name="originalite" value="4" id="or4">
+                            <label for="or4">4</label>
+                            <input type="radio" name="originalite" value="5" id="or5">
+                            <label for="or5">5</label>
+                            <input type="radio" name="originalite" value="6" id="or6">
+                            <label for="or6">6</label>
+                            <input type="radio" name="originalite" value="7" id="or7">
+                            <label for="or7">7</label>
+                            <input type="radio" name="originalite" value="8" id="or8">
+                            <label for="or8">8</label>
+                            <input type="radio" name="originalite" value="9" id="or9">
+                            <label for="or9">9</label>
+                            <input type="radio" name="originalite" value="10" id="or10">
+                            <label for="or10">10</label>
+                        </div>
+                        <div class="rating-value">
+                            <span class="current-rating" data-criteria="originalite">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Gameplay -->
+                    <div class="criteria-item">
+                        <h3 class="criteria-title">GAMEPLAY</h3>
+                        <div class="rating-dots">
+                            <input type="radio" name="gameplay" value="1" id="gp1" required>
+                            <label for="gp1">1</label>
+                            <input type="radio" name="gameplay" value="2" id="gp2">
+                            <label for="gp2">2</label>
+                            <input type="radio" name="gameplay" value="3" id="gp3">
+                            <label for="gp3">3</label>
+                            <input type="radio" name="gameplay" value="4" id="gp4">
+                            <label for="gp4">4</label>
+                            <input type="radio" name="gameplay" value="5" id="gp5">
+                            <label for="gp5">5</label>
+                            <input type="radio" name="gameplay" value="6" id="gp6">
+                            <label for="gp6">6</label>
+                            <input type="radio" name="gameplay" value="7" id="gp7">
+                            <label for="gp7">7</label>
+                            <input type="radio" name="gameplay" value="8" id="gp8">
+                            <label for="gp8">8</label>
+                            <input type="radio" name="gameplay" value="9" id="gp9">
+                            <label for="gp9">9</label>
+                            <input type="radio" name="gameplay" value="10" id="gp10">
+                            <label for="gp10">10</label>
+                        </div>
+                        <div class="rating-value">
+                            <span class="current-rating" data-criteria="gameplay">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Univers -->
+                    <div class="criteria-item">
+                        <h3 class="criteria-title">UNIVERS</h3>
+                        <div class="rating-dots">
+                            <input type="radio" name="univers" value="1" id="un1" required>
+                            <label for="un1">1</label>
+                            <input type="radio" name="univers" value="2" id="un2">
+                            <label for="un2">2</label>
+                            <input type="radio" name="univers" value="3" id="un3">
+                            <label for="un3">3</label>
+                            <input type="radio" name="univers" value="4" id="un4">
+                            <label for="un4">4</label>
+                            <input type="radio" name="univers" value="5" id="un5">
+                            <label for="un5">5</label>
+                            <input type="radio" name="univers" value="6" id="un6">
+                            <label for="un6">6</label>
+                            <input type="radio" name="univers" value="7" id="un7">
+                            <label for="un7">7</label>
+                            <input type="radio" name="univers" value="8" id="un8">
+                            <label for="un8">8</label>
+                            <input type="radio" name="univers" value="9" id="un9">
+                            <label for="un9">9</label>
+                            <input type="radio" name="univers" value="10" id="un10">
+                            <label for="un10">10</label>
+                        </div>
+                        <div class="rating-value">
+                            <span class="current-rating" data-criteria="univers">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-secondary btn-large">VALIDER</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script type="module" src="js/vote.js"></script>
+</body>
+</html>
