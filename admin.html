@@ -262,6 +262,27 @@
             transform: translateY(-2px);
         }
 
+        .delete-btn {
+            position: fixed;
+            bottom: 6rem;
+            right: 2rem;
+            padding: 1rem 2rem;
+            background: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-family: "tchig-mono", monospace;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .delete-btn:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 1rem;
@@ -276,17 +297,24 @@
             }
 
             .refresh-btn,
-            .export-btn {
-                bottom: 1rem;
+            .export-btn,
+            .delete-btn {
                 padding: 0.8rem 1.5rem;
                 font-size: 0.9rem;
             }
 
+            .refresh-btn {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
             .export-btn {
+                bottom: 1rem;
                 left: 1rem;
             }
 
-            .refresh-btn {
+            .delete-btn {
+                bottom: 4.5rem;
                 right: 1rem;
             }
         }
@@ -336,11 +364,12 @@
 
     <button class="export-btn" id="exportBtn" style="display: none;">📥 Exporter CSV</button>
     <button class="refresh-btn" id="refreshBtn" style="display: none;">🔄 Rafraîchir</button>
+    <button class="delete-btn" id="deleteBtn" style="display: none;">🗑️ Supprimer tous les votes</button>
 
     <script type="module">
         // Firebase config
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-        import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        import { getFirestore, collection, getDocs, deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
         const firebaseConfig = {
             apiKey: "AIzaSyB_NZNeptDSuIMccIA9ROxuE6BBNEtDSOY",
@@ -389,6 +418,7 @@
                 document.getElementById('content').style.display = 'block';
                 document.getElementById('refreshBtn').style.display = 'block';
                 document.getElementById('exportBtn').style.display = 'block';
+                document.getElementById('deleteBtn').style.display = 'block';
 
             } catch (error) {
                 console.error('Error loading results:', error);
@@ -524,6 +554,49 @@
         // Event listeners
         document.getElementById('refreshBtn').addEventListener('click', loadResults);
         document.getElementById('exportBtn').addEventListener('click', exportToCSV);
+        document.getElementById('deleteBtn').addEventListener('click', deleteAllVotes);
+
+        async function deleteAllVotes() {
+            const confirmation = confirm('⚠️ ATTENTION ⚠️\n\nTu es sur le point de SUPPRIMER TOUS LES VOTES.\n\nCette action est IRRÉVERSIBLE.\n\nConfirmer ?');
+            
+            if (!confirmation) return;
+
+            const doubleConfirm = confirm('🚨 DERNIÈRE CONFIRMATION 🚨\n\nTous les votes vont être supprimés définitivement.\n\nTu es vraiment sûre ?');
+            
+            if (!doubleConfirm) return;
+
+            try {
+                document.getElementById('deleteBtn').textContent = '⏳ Suppression...';
+                document.getElementById('deleteBtn').disabled = true;
+
+                const votesRef = collection(db, 'votes');
+                const snapshot = await getDocs(votesRef);
+                
+                let deleteCount = 0;
+                const deletePromises = [];
+
+                snapshot.forEach((document) => {
+                    deletePromises.push(deleteDoc(doc(db, 'votes', document.id)));
+                    deleteCount++;
+                });
+
+                await Promise.all(deletePromises);
+
+                alert(`✅ Succès !\n\n${deleteCount} vote(s) supprimé(s) !`);
+                
+                document.getElementById('deleteBtn').textContent = '🗑️ Supprimer tous les votes';
+                document.getElementById('deleteBtn').disabled = false;
+
+                // Reload results
+                loadResults();
+
+            } catch (error) {
+                console.error('Error deleting votes:', error);
+                alert('❌ Erreur lors de la suppression des votes: ' + error.message);
+                document.getElementById('deleteBtn').textContent = '🗑️ Supprimer tous les votes';
+                document.getElementById('deleteBtn').disabled = false;
+            }
+        }
 
         // Load results on page load
         loadResults();
